@@ -1,0 +1,1371 @@
+@font-face {
+  font-family: "Melina";
+  src: url("./assets/fonts/Melina.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newyork";
+  src: url("./assets/fonts/newyork.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/montserrat/ms-regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/montserrat/ms-bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/montserrat/ms-light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/montserrat/ms-italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SeasonsItalic";
+  src: url("./assets/fonts/The Seasons Italic.ttf") format("truetype");
+}
+
+
+:root {
+  --burgundy: #66001f;
+  --cream: #fefcef;
+  --gold: #d8b46a;
+
+  --melina: "Melina", serif;
+  --newyork: "Newyork", serif;
+  --body: "Montserrat", sans-serif;
+  --seasonItalic: "SeasonsItalic", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  font-family: var(--body);
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--burgundy);
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.78)),
+    radial-gradient(circle at center, rgba(102, 0, 31, 0.08), rgba(102, 0, 31, 0.48));
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 820px);
+  min-height: 100svh;
+  padding: 34px 18px 42px;
+  color: white;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.musicButton {
+  position: absolute;
+  top: 22px;
+  right: 18px;
+
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.06)
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+  color: white;
+  cursor: pointer;
+  transition: 0.28s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.musicButton::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(254, 252, 239, 0.16);
+}
+
+.musicButton:hover {
+  transform: scale(1.06);
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.24),
+      rgba(255, 255, 255, 0.1)
+    );
+}
+
+.musicButton.active {
+  border-color: rgba(216, 180, 106, 0.55);
+  color: var(--gold);
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(102, 0, 31, 0.82),
+      rgba(102, 0, 31, 0.62)
+    );
+}
+
+.playIcon {
+  position: relative;
+  z-index: 2;
+  font-size: 15px;
+  line-height: 1;
+  transform: translateX(1px);
+}
+
+.heroLabel {
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--body);
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: var(--newyork);
+  font-size: clamp(86px, 17vw, 190px);
+  font-weight: 400;
+  line-height: 0.9;
+  color: var(--cream);
+  letter-spacing: 1px;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  transform: translateX(-4px);
+}
+
+.hero h2 {
+  margin-top: 16px;
+  font-family: var(--newyork);
+  font-size: clamp(34px, 7vw, 78px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.94);
+  text-transform: uppercase;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.heroDate {
+  margin-top: 42px;
+  font-family: var(--newyork);
+  font-size: clamp(26px, 5vw, 48px);
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.scrollDown {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-decoration: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+
+  transition: 0.28s ease;
+
+  animation: floatArrow 2s ease-in-out infinite;
+}
+
+.scrollDown:hover {
+  scale: 1.05;
+}
+
+.scrollDown b {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@keyframes floatArrow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(72px, 22vw, 120px);
+  }
+
+  .hero h2 {
+    font-size: clamp(30px, 10vw, 54px);
+  }
+
+  .heroDate {
+    font-size: clamp(24px, 6vw, 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .musicButton {
+    top: 16px;
+    right: 14px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .heroLabel {
+    margin-bottom: 28px;
+    letter-spacing: 4px;
+  }
+
+  .scrollDown {
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+  }
+}
+.invitationSection {
+  width: 100%;
+  background: var(--cream);
+  padding: clamp(72px, 10vw, 120px) 0 0;
+  color: var(--burgundy);
+  text-align: center;
+}
+
+.invitationInner {
+  width: min(88%, 720px);
+  margin: 0 auto;
+}
+
+.invitationTitle {
+  margin: 0 0 28px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(54px, 10vw, 92px);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--burgundy);
+}
+
+.invitationText {
+  margin: 0 auto;
+  max-width: 680px;
+  font-family: var(--body);
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 300;
+  line-height: 1.75;
+  color: #2d2d2d;
+}
+
+.invitationText span {
+  display: inline-block;
+  margin: 8px 0 2px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 8vw, 78px);
+  line-height: 1;
+  color: var(--burgundy);
+}
+
+.invitationSlider {
+  width: 100%;
+  margin-top: clamp(58px, 9vw, 90px);
+  padding: 0 max(20px, calc((100vw - 760px) / 2));
+
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(20px, calc((100vw - 760px) / 2));
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.invitationSlider::-webkit-scrollbar {
+  height: 5px;
+}
+
+.invitationSlider::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.invitationSlider::-webkit-scrollbar-thumb {
+  background: rgba(102, 0, 31, 0.28);
+  border-radius: 999px;
+}
+
+.invitationSlide {
+  flex: 0 0 min(78vw, 520px);
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+  border-radius: 28px;
+
+  scroll-snap-align: center;
+
+  background: var(--burgundy);
+  box-shadow: 0 22px 70px rgba(102, 0, 31, 0.18);
+}
+
+.invitationSlide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 520px) {
+  .invitationSlider {
+    gap: 14px;
+    padding: 0 16px;
+    scroll-padding-inline: 16px;
+    margin-top: 54px;
+  }
+
+  .invitationSlide {
+    flex-basis: 82vw;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .invitationSection {
+    padding-top: 64px;
+  }
+
+  .invitationInner {
+    width: min(88%, 420px);
+  }
+
+  .invitationTitle {
+    margin-bottom: 24px;
+  }
+
+  .invitationText {
+    font-size: clamp(19px, 5.2vw, 24px);
+    line-height: 1.7;
+  }
+
+  .invitationText span {
+    font-size: clamp(46px, 13vw, 64px);
+  }
+
+  .invitationPhotoWrap {
+    width: 100%;
+    margin-top: 54px;
+  }
+
+  .invitationPhoto {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* CALENDAR */
+
+.calendarSection {
+  width: 100%;
+
+  background: var(--cream);
+
+  padding:
+    clamp(72px, 10vw, 120px)
+    0;
+}
+
+.calendarInner {
+  width: min(88%, 760px);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.calendarTitle {
+  margin-bottom: 58px;
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: clamp(46px, 8vw, 82px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: var(--burgundy);
+
+  letter-spacing: 1px;
+}
+
+/* GRID */
+
+.calendarGrid {
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 24px 10px;
+
+  align-items: center;
+
+  width: 100%;
+}
+
+.weekDay {
+  font-family: var(--body);
+
+  font-size: clamp(14px, 2vw, 22px);
+
+  font-weight: 600;
+
+  color: #4b4b4b;
+
+  letter-spacing: 1px;
+}
+
+.day {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--body);
+
+  font-size: clamp(18px, 3vw, 28px);
+
+  font-weight: 300;
+
+  color: #595959;
+
+  transition: 0.3s ease;
+}
+
+.selectedDay {
+  background: var(--burgundy);
+  color: var(--cream);
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+.selectedDay::before {
+  content: "";
+
+  position: absolute;
+
+  width: clamp(42px, 5vw, 58px);
+  height: clamp(42px, 5vw, 58px);
+
+  border-radius: 50%;
+
+  background: rgba(214, 159, 170, 0.45);
+
+  z-index: -1;
+
+  backdrop-filter: blur(4px);
+}
+
+/* TIME */
+
+.calendarTime {
+  margin-top: clamp(62px, 8vw, 90px);
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: clamp(42px, 7vw, 74px);
+
+  font-weight: 400;
+
+  color: var(--burgundy);
+
+  letter-spacing: 1px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .calendarInner {
+    width: min(90%, 460px);
+  }
+
+  .calendarGrid {
+    gap: 18px 4px;
+  }
+
+  .weekDay {
+    font-size: clamp(13px, 3vw, 16px);
+  }
+
+  .day {
+    font-size: clamp(16px, 4vw, 22px);
+  }
+}
+
+@media (max-width: 480px) {
+  .calendarSection {
+    padding:
+      72px
+      0;
+  }
+
+  .calendarTitle {
+    margin-bottom: 42px;
+  }
+
+  .calendarGrid {
+    gap: 14px 2px;
+  }
+
+  .selectedDay::before {
+    width: 42px;
+    height: 42px;
+  }
+
+  .calendarTime {
+    margin-top: 56px;
+  }
+}
+
+/* VENUE */
+
+.venueSection {
+  width: 100%;
+  background: var(--cream);
+  padding: 0 0 clamp(72px, 10vw, 120px);
+}
+
+.venueCard {
+  width: min(92%, 860px);
+  margin: 0 auto;
+
+  padding: clamp(58px, 8vw, 92px) 24px;
+
+  background: var(--burgundy);
+  color: var(--cream);
+
+  border-radius: 0;
+
+  text-align: center;
+
+  box-shadow: 0 24px 80px rgba(102, 0, 31, 0.2);
+}
+
+.venueTitle {
+  margin: 0 0 42px;
+
+  font-family: "great vibes", cursive;
+  font-size: clamp(52px, 9vw, 92px);
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--cream);
+}
+
+.venueCard h3 {
+  margin: 0 0 28px;
+
+  font-family: var(--body);
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.25;
+
+  color: var(--cream);
+}
+
+.venueCard p {
+  margin: 14px 0;
+
+  font-family: var(--body);
+  font-size: clamp(18px, 3.2vw, 28px);
+  font-weight: 400;
+  line-height: 1.45;
+
+  color: rgba(254, 252, 239, 0.92);
+}
+
+.venueButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 34px;
+
+  min-width: 210px;
+  min-height: 62px;
+
+  padding: 16px 44px;
+
+  border-radius: 999px;
+
+  background: rgba(254, 252, 239, 0.96);
+  color: var(--burgundy);
+
+  font-family: var(--body);
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.venueButton:hover {
+  transform: translateY(-3px);
+  background: white;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 520px) {
+  .venueSection {
+    padding-bottom: 72px;
+  }
+
+  .venueCard {
+    width: 100%;
+    padding: 64px 22px;
+  }
+
+  .venueTitle {
+    margin-bottom: 34px;
+  }
+
+  .venueButton {
+    min-width: 200px;
+    min-height: 58px;
+  }
+}
+
+/* OWNERS */
+
+.ownersSection {
+  width: 100%;
+
+  background: var(--cream);
+
+  padding:
+    clamp(72px, 10vw, 120px)
+    0;
+}
+
+.ownersInner {
+  width: min(88%, 760px);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.ownersTitle {
+  margin: 0 0 34px;
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: clamp(52px, 9vw, 92px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: var(--burgundy);
+}
+
+.ownersNames {
+  margin: 0 0 54px;
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: clamp(36px, 6vw, 64px);
+
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  color: #444;
+
+  letter-spacing: 1px;
+}
+
+.ownersNames span {
+  margin: 0 10px;
+
+  color: var(--burgundy);
+}
+
+.ownersImageWrap {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: white;
+
+  box-shadow:
+    0 24px 70px rgba(102,0,31,0.12);
+}
+
+.ownersImage {
+  width: 100%;
+
+  display: block;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+
+  object-position: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+  .ownersSection {
+    padding:
+      72px
+      0;
+  }
+
+  .ownersInner {
+    width: min(88%, 430px);
+  }
+
+  .ownersTitle {
+    margin-bottom: 28px;
+  }
+
+  .ownersNames {
+    margin-bottom: 42px;
+
+    line-height: 1.2;
+  }
+}
+
+/* COUNTDOWN */
+
+.countdownSection {
+  width: 100%;
+  background: var(--cream);
+  padding: clamp(30px, 7vw, 80px) 0 clamp(70px, 10vw, 120px);
+  text-align: center;
+}
+
+.countdownTitle {
+  margin: 0 0 34px;
+
+  font-family: "great vibes", cursive;
+  font-size: clamp(46px, 8vw, 86px);
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--burgundy);
+}
+
+.countdownGrid {
+  width: min(92%, 720px);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: start;
+  gap: clamp(8px, 2vw, 22px);
+}
+
+.countdownItem {
+  display: grid;
+  gap: 12px;
+}
+
+.countdownItem strong {
+  font-family: var(--newyork);
+  font-size: clamp(38px, 8vw, 74px);
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--burgundy);
+}
+
+.countdownItem span {
+  font-family: var(--body);
+  font-size: clamp(11px, 2vw, 15px);
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #8a8a8a;
+}
+
+.countdownDivider {
+  padding-top: clamp(2px, 1vw, 6px);
+
+  font-family: var(--newyork);
+  font-size: clamp(34px, 7vw, 68px);
+  line-height: 1;
+
+  color: var(--burgundy);
+}
+
+@media (max-width: 520px) {
+  .countdownGrid {
+    width: min(92%, 420px);
+    gap: 6px;
+  }
+
+  .countdownItem {
+    gap: 9px;
+  }
+
+  .countdownTitle {
+    margin-bottom: 28px;
+  }
+}
+
+/* WISHES */
+
+.wishesSection {
+  width: 100%;
+  background: var(--burgundy);
+  padding: clamp(72px, 10vw, 120px) 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wishesTitle {
+  margin: 0 0 54px;
+
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(62px, 10vw, 120px);
+  font-weight: 400;
+  line-height: 0.9;
+
+  color: var(--cream);
+
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.wishesSlider {
+  width: 100%;
+  padding: 0 max(20px, calc((100vw - 860px) / 2));
+
+  display: flex;
+  gap: 22px;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(20px, calc((100vw - 860px) / 2));
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.wishesSlider::-webkit-scrollbar {
+  height: 5px;
+}
+
+.wishesSlider::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wishesSlider::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+}
+
+.wishCard {
+  flex: 0 0 min(78vw, 430px);
+  min-height: 260px;
+  padding: 34px 30px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.96),
+      rgba(252, 244, 244, 0.94)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.42);
+
+  color: var(--burgundy);
+  text-align: left;
+
+  scroll-snap-align: center;
+
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
+}
+
+.wishCard h3 {
+  margin: 0;
+
+  font-family: var(--body);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+
+  color: var(--burgundy);
+}
+
+.wishCard span {
+  display: block;
+
+  margin: 6px 0 24px;
+
+  font-family: var(--body);
+  font-size: 15px;
+
+  color: rgba(102, 0, 31, 0.72);
+}
+
+.wishCard p {
+  margin: 0;
+
+  font-family: var(--body);
+  font-size: clamp(18px, 3vw, 23px);
+  font-weight: 400;
+  line-height: 1.45;
+
+  color: var(--burgundy);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  max-height: calc(1.45em * 5);
+
+  overflow-y: auto;
+
+  padding-right: 6px;
+}
+.wishCard p::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wishCard p::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wishCard p::-webkit-scrollbar-thumb {
+  background: rgba(102, 0, 31, 0.22);
+  border-radius: 999px;
+}
+
+.wishForm {
+  width: min(88%, 680px);
+
+  margin: 70px auto 0;
+
+  padding: clamp(36px, 6vw, 58px);
+
+  border-radius: 34px;
+
+  background: rgba(254, 252, 239, 0.09);
+
+  border: 1px solid rgba(254, 252, 239, 0.18);
+
+  display: grid;
+  gap: 18px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.wishForm h3 {
+  margin: 0 0 18px;
+
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(54px, 9vw, 96px);
+  font-weight: 400;
+  line-height: 0.9;
+
+  color: var(--cream);
+}
+
+.wishForm input,
+.wishForm textarea {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  border-radius: 24px;
+
+  padding: 18px 22px;
+
+  font-family: var(--body);
+  font-size: 18px;
+
+  color: var(--burgundy);
+  background: var(--cream);
+}
+
+.wishForm input::placeholder,
+.wishForm textarea::placeholder {
+  color: rgba(102, 0, 31, 0.55);
+}
+
+.wishForm textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.wishForm button {
+  justify-self: center;
+
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 16px 48px;
+
+  background: var(--cream);
+  color: var(--burgundy);
+
+  font-family: var(--body);
+  font-size: 20px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.wishForm button:hover {
+  transform: translateY(-3px);
+  background: white;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.wishForm button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 520px) {
+  .wishesSection {
+    padding: 72px 0;
+  }
+
+  .wishesTitle {
+    margin-bottom: 44px;
+    font-size: clamp(58px, 16vw, 84px);
+  }
+
+  .wishesSlider {
+    gap: 16px;
+    padding: 0 16px;
+    scroll-padding-inline: 16px;
+  }
+
+  .wishCard {
+    flex-basis: 82vw;
+    min-height: 250px;
+    padding: 28px 24px;
+    border-radius: 26px;
+  }
+
+  .wishForm {
+    width: 92%;
+    margin-top: 58px;
+    padding: 34px 22px;
+    border-radius: 30px;
+  }
+
+  .wishForm h3 {
+    font-size: clamp(52px, 15vw, 78px);
+  }
+
+  .wishForm input,
+  .wishForm textarea {
+    font-size: 17px;
+    border-radius: 22px;
+  }
+}
+
+/* RSVP */
+
+.rsvpSection {
+  width: 100%;
+
+  background: var(--cream);
+
+  padding:
+    clamp(72px, 10vw, 120px)
+    0;
+}
+
+.rsvpInner {
+  width: min(88%, 760px);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.rsvpTitle {
+  margin: 0 0 28px;
+
+  font-family: var(--body);
+
+  font-size: clamp(26px, 4.8vw, 48px);
+  font-weight: 700;
+
+  line-height: 1.12;
+
+  color: var(--burgundy);
+}
+
+.rsvpDescription {
+  margin: 0 0 42px;
+
+  font-family: var(--body);
+
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-weight: 300;
+
+  line-height: 1.5;
+
+  color: #666;
+}
+
+.rsvpForm {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.rsvpForm input[type="text"] {
+  width: 100%;
+
+  height: 78px;
+
+  border-radius: 22px;
+
+  border: 3px solid var(--burgundy);
+
+  background: transparent;
+
+  padding: 0 24px;
+
+  outline: none;
+
+  font-family: var(--body);
+
+  font-size: clamp(18px, 3vw, 24px);
+
+  color: var(--burgundy);
+}
+
+.rsvpForm input[type="text"]::placeholder {
+  color: rgba(102,0,31,0.52);
+}
+
+.radioGroup {
+  width: 100%;
+
+  margin-top: 34px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+
+  align-items: flex-start;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  cursor: pointer;
+}
+
+.radioItem input {
+  width: 22px;
+  height: 22px;
+
+  accent-color: var(--burgundy);
+}
+
+.radioItem span {
+  font-family: var(--body);
+
+  font-size: clamp(20px, 3vw, 28px);
+
+  color: #2c2c2c;
+
+  text-align: left;
+}
+
+.rsvpForm button {
+  margin-top: 52px;
+
+  min-width: 280px;
+  min-height: 76px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: var(--burgundy);
+
+  color: white;
+
+  font-family: var(--body);
+
+  font-size: clamp(26px, 4vw, 36px);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.rsvpForm button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 42px rgba(102,0,31,0.24);
+}
+
+.rsvpForm button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .rsvpInner {
+    width: min(88%, 430px);
+  }
+
+  .rsvpDescription {
+    margin-bottom: 34px;
+  }
+
+  .rsvpForm input[type="text"] {
+    height: 70px;
+
+    border-radius: 18px;
+
+    font-size: 18px;
+  }
+
+  .radioGroup {
+    margin-top: 28px;
+
+    gap: 18px;
+  }
+
+  .radioItem span {
+    font-size: 18px;
+  }
+
+  .rsvpForm button {
+    width: 100%;
+    min-width: unset;
+
+    min-height: 68px;
+
+    margin-top: 42px;
+
+    font-size: 24px;
+  }
+}
