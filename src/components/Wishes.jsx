@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   addDoc,
   collection,
-  limit,
   onSnapshot,
   orderBy,
   query,
@@ -18,23 +17,22 @@ function Wishes() {
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    const wishesQuery = query(
-      collection(db, "wishes"),
-      orderBy("createdAt", "desc"),
-      limit(12)
-    );
+  const wishesQuery = query(
+    collection(db, "wishes"),
+    orderBy("createdAt", "desc")
+  );
 
-    const unsubscribe = onSnapshot(wishesQuery, (snapshot) => {
-      const wishList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+  const unsubscribe = onSnapshot(wishesQuery, (snapshot) => {
+    const wishList = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-      setWishes(wishList);
-    });
+    setWishes(wishList);
+  });
 
-    return () => unsubscribe();
-  }, []);
+  return () => unsubscribe();
+}, []);
 
  async function handleSubmit(event) {
   event.preventDefault();

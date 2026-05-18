@@ -8,8 +8,15 @@ import Owners from "./components/Owners";
 import Countdown from "./components/Countdown";
 import Wishes from "./components/Wishes";
 import RSVP from "./components/RSVP";
+import DataPage from "./components/DataPage";
 
 function App() {
+  const isDataPage = window.location.pathname === "/data";
+
+  if (isDataPage) {
+    return <DataPage />;
+  }
+
   return (
     <main>
       <Hero />

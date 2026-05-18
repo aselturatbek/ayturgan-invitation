@@ -1369,3 +1369,248 @@ body {
     font-size: 24px;
   }
 }
+/* DATA PAGE - CLEAN ADMIN VIEW */
+
+.dataPage {
+  min-height: 100vh;
+  background: #f7f2ec;
+  color: #2d2326;
+  padding: clamp(24px, 5vw, 64px);
+  font-family: var(--body);
+}
+
+.dataHeader {
+  width: min(100%, 1120px);
+  margin: 0 auto 34px;
+}
+
+.dataHeader p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(102, 0, 31, 0.6);
+}
+
+.dataHeader h1 {
+  margin: 0;
+  font-family: var(--newyork);
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 400;
+  color: var(--burgundy);
+}
+
+/* STATS */
+
+.dataStats {
+  width: min(100%, 1120px);
+  margin: 0 auto 44px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.dataStats div {
+  padding: 24px 22px;
+  border-radius: 22px;
+  background: var(--burgundy);
+  color: var(--cream);
+  box-shadow: 0 14px 34px rgba(102, 0, 31, 0.16);
+}
+
+.dataStats span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.dataStats strong {
+  display: block;
+  font-family: var(--newyork);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* BLOCKS */
+
+.dataBlock {
+  width: min(100%, 1120px);
+  margin: 0 auto 48px;
+  padding: clamp(22px, 4vw, 34px);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(102, 0, 31, 0.09);
+  box-shadow: 0 20px 60px rgba(102, 0, 31, 0.08);
+}
+
+.dataBlock h2 {
+  margin: 0 0 22px;
+  font-family: var(--newyork);
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  color: var(--burgundy);
+}
+
+/* RSVP ROWS */
+
+.simpleRow {
+  padding: 18px 20px;
+  margin-bottom: 12px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(102, 0, 31, 0.08);
+}
+
+.simpleRow:last-child,
+.wishRow:last-child {
+  margin-bottom: 0;
+}
+
+.simpleRow strong {
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 700;
+  color: #24191d;
+}
+
+.simpleRow span {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(102, 0, 31, 0.08);
+  color: var(--burgundy);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* WISH ROWS */
+
+.wishRow {
+  padding: 22px 22px;
+  margin-bottom: 14px;
+
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(102, 0, 31, 0.08);
+}
+
+.wishRow strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 700;
+  color: var(--burgundy);
+}
+
+.wishRow p {
+  margin: 0;
+  font-size: clamp(15px, 2.2vw, 18px);
+  line-height: 1.7;
+  color: #4f4649;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.emptyData {
+  padding: 24px;
+  border-radius: 18px;
+  background: #fff;
+  color: #777;
+  text-align: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .dataStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .simpleRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .simpleRow span {
+    width: fit-content;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .dataPage {
+    padding: 22px 14px;
+  }
+
+  .dataStats {
+    gap: 10px;
+  }
+
+  .dataStats div {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .dataBlock {
+    padding: 20px 14px;
+    border-radius: 22px;
+  }
+
+  .simpleRow,
+  .wishRow {
+    padding: 18px 16px;
+  }
+}
+.pagination {
+  margin-top: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.pagination button {
+  border: none;
+  border-radius: 999px;
+
+  padding: 12px 22px;
+
+  background: var(--burgundy);
+  color: var(--cream);
+
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination p {
+  margin: 0;
+  min-width: 58px;
+
+  text-align: center;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  color: var(--burgundy);
+}
